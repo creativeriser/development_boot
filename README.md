@@ -1,4 +1,4 @@
-# Full-Stack Web Development & AI Engineering Bootcamp
+# Full-Stack Development & AI Integration
 
 Welcome to my comprehensive 6-week Full-Stack MERN Stack and AI Integration blueprint. This repository acts as a live ledger of my day-by-day progression from basic engineering architectures to enterprise-ready system workflows, containerization, and advanced generative AI implementation.
 
