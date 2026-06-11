@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Title</title>
+    
+
+</head>
+<body>
+      
+<script>
+    const pro = new Promise((res,rej) => {
+        setTimeout(() => {
+            res("Payment Done");
+        }, 5000);
+    });
+
+    async function getData(){
+        //pro.then((x) => console.log(x));
+        const v= await pro;
+        console.log(v)
+        console.log("Dashboard Access");
+    }
+    getData();
+</script>
+
+
+    
+</body>
+</html>

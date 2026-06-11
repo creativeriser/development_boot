@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aero Weather UI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Animated Mesh Background -->
+    <div class="mesh-bg">
+        <div class="mesh-orb orb-1"></div>
+        <div class="mesh-orb orb-2"></div>
+        <div class="mesh-orb orb-3"></div>
+    </div>
+
+    <!-- Main App Container -->
+    <div class="app-window">
+        
+        <!-- Search Header -->
+        <header class="app-header">
+            <div class="search-container">
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="city-input" placeholder="Search for a city..." autocomplete="off">
+                <div class="search-loader hidden" id="search-loader"></div>
+                
+                <!-- Autocomplete Dropdown -->
+                <ul class="suggestions-dropdown hidden" id="suggestions-dropdown">
+                    <!-- Suggested items injected via JS -->
+                </ul>
+            </div>
+        </header>
+
+        <!-- Initial/Error State -->
+        <div id="status-message" class="status-message hidden">
+            <!-- Messages injected here -->
+        </div>
+
+        <!-- App Body (Weather Data) -->
+        <main id="app-body" class="app-body hidden">
+            
+            <!-- Left Panel (Current Weather) -->
+            <section class="current-weather panel stagger-item">
+                <div class="location-badge">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span id="city-name">--</span>
+                </div>
+                
+                <div class="weather-visual">
+                    <div id="main-icon" class="main-icon">
+                        <!-- Icon SVG -->
+                    </div>
+                </div>
+
+                <div class="temperature-wrap">
+                    <h1 id="current-temp" class="counter">0</h1>
+                    <span class="temp-unit">°C</span>
+                </div>
+                
+                <p id="weather-desc" class="weather-desc">--</p>
+                <p id="date-time" class="date-time">--</p>
+            </section>
+
+            <!-- Right Panel (Details Grid) -->
+            <section class="weather-details stagger-item">
+                
+                <div class="detail-card glass-card">
+                    <div class="card-header">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                        <span>Humidity</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="value-wrap">
+                            <span id="humidity" class="counter">0</span>
+                            <span class="unit">%</span>
+                        </div>
+                        <div class="progress-wrap">
+                            <div class="progress-bg">
+                                <div id="humidity-bar" class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-card glass-card">
+                    <div class="card-header">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+                        <span>Wind</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="value-wrap">
+                            <span id="wind-speed" class="counter">0</span>
+                            <span class="unit">km/h</span>
+                        </div>
+                        <div class="footer-info">
+                            <span id="wind-direction" class="badge">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-card glass-card">
+                    <div class="card-header">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5l-5-3-5 3"/></svg>
+                        <span>Feels Like</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="value-wrap">
+                            <span id="feels-like" class="counter">0</span>
+                            <span class="unit">°C</span>
+                        </div>
+                        <div class="footer-info">
+                            <span class="subtext">Actual temperature difference</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-card glass-card">
+                    <div class="card-header">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <span>Visibility</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="value-wrap">
+                            <span id="visibility" class="counter">0</span>
+                            <span class="unit">km</span>
+                        </div>
+                        <div class="footer-info">
+                            <span id="visibility-status" class="subtext">--</span>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
